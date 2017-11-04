@@ -41,13 +41,13 @@ data$Time <- as.POSIXct(paste(data$Date, data$Time), format="%d/%m/%Y %H:%M:%S")
 data$Date <- as.Date(data$Date, format = "%d/%m/%Y")
 
 #filter dates
-powerdata <- filter(data, Date == as.Date('2007-02-01') | Date == as.Date('2007-02-02'))
+data <- filter(data, Date == as.Date('2007-02-01') | Date == as.Date('2007-02-02'))
 
 #open plot 2
 png(file = "plot2.png")
 
 #plot 2
-plot(powerdata$Time ,powerdata$Global_active_power, type = "l", xlab = '', ylab = "Global Active Power (kilowatts)")
+plot(data$Time ,data$Global_active_power, type = "l", xlab = '', ylab = "Global Active Power (kilowatts)")
 
 #close png
 dev.off()
