@@ -41,16 +41,16 @@ data$Time <- as.POSIXct(paste(data$Date, data$Time), format="%d/%m/%Y %H:%M:%S")
 data$Date <- as.Date(data$Date, format = "%d/%m/%Y")
 
 #filter dates
-powerdata <- filter(data, Date == as.Date('2007-02-01') | Date == as.Date('2007-02-02'))
+data <- filter(data, Date == as.Date('2007-02-01') | Date == as.Date('2007-02-02'))
 
 #open plot 3
 png(file = "plot3.png")
 
 #plot 3
-plot(powerdata$Time,  powerdata$Sub_metering_1, type = "l", xlab = '', ylab = "Energy sub metering")
-  lines(powerdata$Time, powerdata$Sub_metering_2, col="Red")
-  lines(powerdata$Time, powerdata$Sub_metering_3, col="Blue")
-  legend("topright",lty=1,col = c("black","red","blue"),legend=(c("Sub_metering_1","Sub_metering_2","Sub_metering_3")))
-  
+plot(data$Time,  data$Sub_metering_1, type = "l", xlab = '', ylab = "Energy sub metering")
+lines(data$Time, data$Sub_metering_2, col="Red")
+lines(data$Time, data$Sub_metering_3, col="Blue")
+legend("topright",lty=1,col = c("black","red","blue"),legend=(c("Sub_metering_1","Sub_metering_2","Sub_metering_3")))
+
 #close png
 dev.off()
