@@ -1,3 +1,6 @@
+#get wd
+getwd()
+
 #install dplyr
 if(!"dplyr" %in% rownames(installed.packages())) {install.packages("dplyr")}
 
@@ -41,13 +44,13 @@ data$Time <- as.POSIXct(paste(data$Date, data$Time), format="%d/%m/%Y %H:%M:%S")
 data$Date <- as.Date(data$Date, format = "%d/%m/%Y")
 
 #filter dates
-powerdata <- filter(data, Date == as.Date('2007-02-01') | Date == as.Date('2007-02-02'))
+data <- filter(data, Date == as.Date('2007-02-01') | Date == as.Date('2007-02-02'))
 
 #open png
 png(file = "plot1.png")
 
 #plot 1
-hist(powerdata$Global_active_power, col = "Red", xlab = "Global Active Power (kilowatts)",main = "Global Active Power")
+hist(data$Global_active_power, col = "Red", xlab = "Global Active Power (kilowatts)",main = "Global Active Power")
 
 #close png
 dev.off()
